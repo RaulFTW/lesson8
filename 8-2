@@ -1,0 +1,53 @@
+---
+- company:
+    name: Mechta
+    departments:
+      - 1:
+          salary: the highest
+          employees:
+              olga:
+                  person: 4
+                  job: accountant
+              dmitriy:
+                  person: 3
+              ivans:
+                  person: 2
+      - 2:
+          department age: the youngest under 30
+          employees:
+              romans:
+                  person: 4
+                  job: lawyer
+              maksim:
+                  person: 2
+                  job: driver
+      - 3:
+          employees:
+              olga:
+                  person: 1
+                  job: lawyer
+              ivan:
+                  person: 1
+                  job: builder
+              nikolay:
+                  person: 1
+                  job: builder
+      - 4,5:
+           5:
+              department age:
+                  men:
+                      age: retirement age
+              salary: high
+           employees:
+              yulya:
+                  person: 5
+                  age: 30+
+                  job: paperwork
+
+      - 6:
+          employees:
+              igor:
+                  name: Igor Viktorovich
+                  job: security director
+                  age: 50+
+---
