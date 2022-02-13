@@ -30,7 +30,7 @@
                   - counts: 1
                   - job: builder
               - nikolay:
-                  - 1
+                  - counts: 1
                   - job: builder
       - 4,5:
           - 5:
