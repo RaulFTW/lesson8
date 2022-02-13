@@ -5,31 +5,31 @@
       - 1:
           salary: the highest
           employees:
-              olga:
+              - olga:
                   person: 4
                   job: accountant
-              dmitriy:
+              - dmitriy:
                   person: 3
-              ivans:
+              - ivans:
                   person: 2
       - 2:
           department age: the youngest under 30
           employees:
-              romans:
+              - romans:
                   person: 4
                   job: lawyer
-              maksim:
+              - maksim:
                   person: 2
                   job: driver
       - 3:
           employees:
-              olga:
+              - olga:
                   person: 1
                   job: lawyer
-              ivan:
+              - ivan:
                   person: 1
                   job: builder
-              nikolay:
+              - nikolay:
                   person: 1
                   job: builder
       - 4,5:
@@ -39,14 +39,14 @@
                       age: retirement age
               salary: high
            employees:
-              yulya:
+              - yulya:
                   person: 5
                   age: 30+
                   job: paperwork
 
       - 6:
           employees:
-              igor:
+              - igor:
                   name: Igor Viktorovich
                   job: security director
                   age: 50+
