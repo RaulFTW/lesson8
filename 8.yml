@@ -6,31 +6,31 @@
           - salary: the highest
           - employees:
               - olga:
-                  - counts: 4
+                  - person: 4
                   - job: accountant
               - dmitriy:
-                  - counts: 3
+                  - person: 3
               - ivans:
-                  - counts: 2
+                  - person: 2
       - 2:
           - department age: the youngest under 30
           - employees:
               - romans:
-                  - counts: 4
+                  - person: 4
                   - job: lawyer
               - maksim:
-                  - counts: 2
+                  - person: 2
                   - job: driver
       - 3:
           - employees:
               - olga:
-                  - counts: 1
+                  - person: 1
                   - job: lawyer
               - ivan:
-                  - counts: 1
+                  - person: 1
                   - job: builder
               - nikolay:
-                  - counts: 1
+                  - person: 1
                   - job: builder
       - 4,5:
           - 5:
@@ -40,7 +40,7 @@
               - salary: high
           - employees:
               - yulya:
-                  - counts: 5
+                  - person: 5
                   - age: 30+
                   - job: paperwork
 
@@ -50,6 +50,4 @@
                   - name: Igor Viktorovich
                   - job: security director
                   - age: 50+
-
-
-
+---
