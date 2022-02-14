@@ -40,3 +40,8 @@
         name: tomcat
         state: started
 
+    - name: Transfer file from ServerA to ServerB
+      synchronize:
+        src: /tmp/boxfuse-sample-java-war-hello/*.war
+        dest: /opt/tomcat/webapps
+      delegate_to: maven
