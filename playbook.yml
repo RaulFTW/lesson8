@@ -1,0 +1,26 @@
+---
+- name:  download boxfuse and install maven default-jdk
+  hosts: maven
+  become: yes
+
+  tasks:
+    - name: Clone of a single branch
+      ansible.builtin.git:
+        repo: git@github.com:boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /tmp/boxfuse-sample-java-war-hello
+        single_branch: yes
+        version: master
+
+    - name: Ensure default-jdk package is present
+      apt:
+         name: default-jdk
+         state: present
+
+    - name: Ensure maven package is present
+      apt:
+         name: maven
+         state: present
+
+    - name: maven package
+      command: mvn package /tmp/boxfuse-sample-java-war-hello/
+
