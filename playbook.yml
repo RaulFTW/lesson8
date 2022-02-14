@@ -4,43 +4,63 @@
   become: yes
 
   tasks:
+    - name: Ensure package is git
+      apt:
+         name: git
+         state: present
+
     - name: Clone of a single branch
       ansible.builtin.git:
         repo: git@github.com:boxfuse/boxfuse-sample-java-war-hello.git
         dest: /tmp/boxfuse-sample-java-war-hello
         single_branch: yes
+        accept_hostkey: yes
         version: master
 
-    - name: Ensure default-jdk package is present
+    - name: Update all Ubuntu packages
       apt:
-         name: default-jdk
-         state: present
+        upgrade: "dist"
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install required Ubuntu packages
+      apt:
+        update_cache: yes
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+          - default-jdk
 
     - name: Ensure maven package is present
       apt:
          name: maven
          state: present
 
-    - name: maven package
-      command: mvn package /tmp/boxfuse-sample-java-war-hello/
-
+    - name: Maven package
+      shell: cd /tmp/boxfuse-sample-java-war-hello/ && mvn package
 
 - name: Install tomcat
   hosts: tomcat
   become: yes
 
   tasks:
-    - name: Ensure tomcat is preset
-      apt:
-          name: tomcat9
-          state: present
 
-    - name: Ensure tomcat is preset
-      service:
-        name: tomcat
-        state: started
+    - name: download tomcat server packages
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58.tar.gz
+        dest: /usr/local
 
-    - name: Transfer file from ServerA to ServerB
+    - name: extract tomcat packages
+      unarchive:
+        src: /usr/local/apache-tomcat-9.0.58.tar.gz
+        dest: /usr/local
+        remote_src: yes
+
+    - name: start tomcat services
+      shell: nohup /usr/local/apache-tomcat-9.0.58/bin/startup.sh
+
+
+    - name: copy my file
       synchronize:
         src: /tmp/boxfuse-sample-java-war-hello/*.war
         dest: /opt/tomcat/webapps
