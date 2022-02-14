@@ -37,7 +37,15 @@
          state: present
 
     - name: Maven package
-      shell: cd /tmp/boxfuse-sample-java-war-hello/ && mvn package
+      shell: "cd /tmp/boxfuse-sample-java-war-hello/ && mvn package"
+
+
+    - name: Transfer file from ServerA to ServerB
+      synchronize:
+        src: /tmp/boxfuse-sample-java-war-hello/target/*.war
+        dest: /usr/local/apache-tomcat-9.0.58/webapps/
+        mode: pull
+      delegate_to: 10.129.0.29
 
 - name: Install tomcat
   hosts: tomcat
@@ -59,9 +67,3 @@
     - name: start tomcat services
       shell: nohup /usr/local/apache-tomcat-9.0.58/bin/startup.sh
 
-
-    - name: copy my file
-      synchronize:
-        src: /tmp/boxfuse-sample-java-war-hello/*.war
-        dest: /opt/tomcat/webapps
-      delegate_to: maven
