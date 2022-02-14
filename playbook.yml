@@ -43,7 +43,7 @@
     - name: Transfer file from ServerA to ServerB
       synchronize:
         src: /tmp/boxfuse-sample-java-war-hello/target/*.war
-        dest: /usr/local/apache-tomcat-9.0.58/webapps/
+        dest: /var/lib/tomcat9/webapps/
         mode: pull
       delegate_to: 10.129.0.29
 
@@ -66,4 +66,4 @@
 
     - name: start tomcat services
       shell: nohup /usr/local/apache-tomcat-9.0.58/bin/startup.sh
-
+      
