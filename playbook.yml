@@ -24,3 +24,19 @@
     - name: maven package
       command: mvn package /tmp/boxfuse-sample-java-war-hello/
 
+
+- name: Install tomcat
+  hosts: tomcat
+  become: yes
+
+  tasks:
+    - name: Ensure tomcat is preset
+      apt:
+          name: tomcat9
+          state: present
+
+    - name: Ensure tomcat is preset
+      service:
+        name: tomcat
+        state: started
+
